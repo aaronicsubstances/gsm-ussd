@@ -1,12 +1,14 @@
-I ported Jochen Gruse [gsm_ussd](https://github.com/JochenHoch2/gsm-ussd) from Perl to Python 2 in 2016. It is meant for the same purpose of making USSD requests with GSM modems from the command line.
+# gsm_ussd.py
 
-My motivation for this port was my inability to get the Perl script to work with USSD codes which generate multiline responses, and also my better familiarity with Python than Perl. This was my firs attempt at deciphering Perl code and thank God I did it successfully.
+This is a port of Jochen Gruse's [gsm_ussd](https://github.com/JochenHoch2/gsm-ussd) from Perl to Python 2 in December 2016. It is meant for the same purpose of making USSD requests with GSM modems from the command line.
+
+My motivation for this port was my inability to get the Perl script to work with USSD codes which generate multiline responses, and also my better familiarity with Python than Perl. This was my first attempt at understanding Perl code and thank God I did it successfully.
 
 ## Requirements
 
 * Python 2
 * **pexpect**, **smspdu**, **serial** pip packages
-* *nix systems (specifically wherever pexpect package is fully supported). I used Ubuntu 14.04.
+* \*nix systems (specifically wherever pexpect package is fully supported). I used Ubuntu 14.04.
 
 Tested with the following modems
 
@@ -15,7 +17,7 @@ Tested with the following modems
 
 ## Running
 
-In Ghana almost all telecom networks assign *124# for checking airtime credit balance. So that is the default ussd request made by the gsm_ussd.py script when launched with no arguments.
+In Ghana almost all telecom networks assign \*124# for checking airtime credit balance. So that is the default ussd request made by the gsm_ussd.py script when launched with no arguments.
 
 The acceptable arguments closely match that of the mother Perl [gsm_ussd](https://github.com/JochenHoch2/gsm-ussd) project:
 

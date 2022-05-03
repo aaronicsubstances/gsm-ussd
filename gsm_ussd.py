@@ -451,7 +451,7 @@ def lock_modemport(modem_device):
 	lock_handle = None
 	try:
 		lock_handle = os.open(lock_file, 
-				os.O_CREAT|os.O_WRONLY|os.O_EXCL, 0644)
+				os.O_CREAT|os.O_WRONLY|os.O_EXCL, '0644')
 	except OSError as exc:
 		logging.warn("Can't get lockfile %s: %s", #- probably already in use!",
 			lock_file, exc)
@@ -813,14 +813,14 @@ def send_command(cmd, how_to_react):
 	try:
 		expect.send("{0}\r".format(cmd))
 		my_expect(expect_programs[how_to_react])
-	except pexpect.TIMEOUT, error:
+	except pexpect.TIMEOUT:
 		return {
 			'ok' 			: fail, # global variable
 			'match' 		: error,
 			'description' 	: "No answer for %d seconds!" %
 				timeout_for_answer,
 		}
-	except pexpect.EOF, error:
+	except pexpect.EOF:
 		return {
 			'ok' 			: fail, # global variable
 			'match' 		: error,
@@ -1101,7 +1101,7 @@ def is_valid_ussd_query(query):
 	
 	# The first RegExp checks for a standard USSD
 	# The second allows simple numbers as used by USSD sessions
-	if re.search(r'^\*[0-9*]+#$', query) or \
+	if re.search(r'^\*[0-9\*\#]*[0-9]+#$', query) or \
 			re.search(r'^\d+$', query):
 		return True
 	return False
